@@ -1,0 +1,1 @@
+aws ec2 describe-instances --filters Name=vpc-id,Values=vpc-1dd10564 –query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId,Tags[?Key==`Name`].Value[]]'
