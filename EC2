@@ -1,0 +1,23 @@
+ resource "aws_instance" "Test1" {
+ ami="ami-7a85a01a"
+ instance_type = "t2.micro"
+ iam_instance_profile = "ec2"
+ security_groups = ["YES","NO"]
+  key_name = "Final"
+  root_block_device = {
+  volume_size = 30
+ }
+ connection {
+ type = "ssh"
+ user = "ec2-user"
+ private_key = "${file("/home/ec2-user/Final.pem")}"
+ }
+ provisioner "remote-exec" {
+ inline = [
+ "aws ec2 start-instances --region us-west-1 --instance-ids i-05b1b75ae2c555127"
+ ]
+ }
+ tags = {
+ Name = "Testinstance1"
+ }
+}
