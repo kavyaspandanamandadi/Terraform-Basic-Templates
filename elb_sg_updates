@@ -1,0 +1,8 @@
+resource "aws_security_group" "nonprod-sg" {
+  name        = "nonprod-sg"        ##to update or edit the name of security group
+...
+
+  tags {
+    Environment = "nonprod"    ##to update or edit the additional tags of security group
+  }
+}
